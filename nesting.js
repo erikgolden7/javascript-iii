@@ -1,35 +1,35 @@
 // =========================
-// NESTING 
+// NESTING
 // =========================
 
 // === PROBLEM 1 ===========
 
 var employees = [{
-  "firstName": "Von",
-  "lastName": "Budibent",
-  "email": "vbudibent0@163.com",
-  "department": "Sales"
+	"firstName": "Von",
+	"lastName": "Budibent",
+	"email": "vbudibent0@163.com",
+	"department": "Sales"
 }, {
-  "firstName": "Catherina",
-  "lastName": "Swalowe",
-  "email": "cswalowe1@example.com",
-  "department": "Engineering"
+	"firstName": "Catherina",
+	"lastName": "Swalowe",
+	"email": "cswalowe1@example.com",
+	"department": "Engineering"
 }, {
-  "firstName": "Theo",
-  "lastName": "Trill",
-  "email": "ttrill2@sina.com.cn",
-  "department": "Services"
+	"firstName": "Theo",
+	"lastName": "Trill",
+	"email": "ttrill2@sina.com.cn",
+	"department": "Services"
 }, {
-  "firstName": "Elsy",
-  "lastName": "McCrorie",
-  "email": "emccrorie3@netscape.com",
-  "department": "Legal"
+	"firstName": "Elsy",
+	"lastName": "McCrorie",
+	"email": "emccrorie3@netscape.com",
+	"department": "Legal"
 }, {
-  "firstName": "Lorie",
-  "lastName": "Handsheart",
-  "email": "lhandsheart4@fotki.com",
-  "department": "Research and Development"
-}]
+	"firstName": "Lorie",
+	"lastName": "Handsheart",
+	"email": "lhandsheart4@fotki.com",
+	"department": "Research and Development"
+}];
 
 // Create a function called 'employeeUpdater'. employeeUpdater will loop over the array above and perform the following:
 //  1. If employee's first name is Theo, remove that employee because he just got fired.
@@ -37,8 +37,16 @@ var employees = [{
 //  3. Return the updated employee array.
 
 // Code here
-
-
+function employeeUpdater() {
+	employees.forEach(function(obj, i) {
+		if (obj.firstName === 'Theo') {
+			delete employees[i];
+		} else if (obj.firstName === 'Lorie') {
+			employees[i].department = 'HR';
+		}
+	});
+	return employees;
+}
 
 
 
@@ -47,7 +55,7 @@ var employees = [{
 // === PROBLEM 2 ==========
 
 
-// The array below represents IDs tied to reported workplace accidents. An employee accidentally entered in duplicates to array, making it look as though there are more accidents this year than there actually are. 
+// The array below represents IDs tied to reported workplace accidents. An employee accidentally entered in duplicates to array, making it look as though there are more accidents this year than there actually are.
 // 1. Write a function called 'removeDuplicates' that will remove all duplicate entries in the workplaceAccidents array.
 // 2. Use nested for loops to check for duplicate numbers, and then remove the duplicates from the array.
 // 3. Return the updated array.
@@ -56,8 +64,16 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
 // Code here
 
-
-
+function removeDuplicates() {
+	for (var i = 0; i < workplaceAccidents.length; i++) {
+		for (var a = i + 1; a < workplaceAccidents.length; a++) {
+			if (workplaceAccidents[i] == workplaceAccidents[a]) {
+				workplaceAccidents.splice(a, 1);
+			}
+		}
+	}
+	return workplaceAccidents;
+}
 
 
 
@@ -68,17 +84,17 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 // === PROBLEM 3 ==========
 
 var cat = {
-  name: 'Fluffy',
-  catFriends: [{
-    name: 'Grumpy',
-    activities: ['be grumpy', 'eat food']
-  }, {
-    name: 'Lazy Bones',
-    activities: ['sleep', 'pre-sleep naps']
-    }]
-}
+	name: 'Fluffy',
+	catFriends: [{
+		name: 'Grumpy',
+		activities: ['be grumpy', 'eat food']
+	}, {
+		name: 'Lazy Bones',
+		activities: ['sleep', 'pre-sleep naps']
+	}]
+};
 
-// Fluffy has two friends, Grumpy and Lazy Bones. 
+// Fluffy has two friends, Grumpy and Lazy Bones.
 // 1. Assign the value of Grumpy's 2nd activity to the variable below.
 // 2. Assign fluffy2ndFriend the name of Fluffy's 2nd friend.
 
@@ -87,6 +103,8 @@ var cat = {
 var grumpyActivity;
 var fluffy2ndFriend;
 
+grumpyActivity = cat.catFriends[0].activities[1];
+fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -102,28 +120,30 @@ var fluffy2ndFriend;
 // 3. Change atFaultForAccident from true to false.
 
 var myCar = {
-  make: 'Toyota',
-  model: 'Corolla',
-  year: 1992,
-  accidents: [
-    {
-      date: '3/15/93',
-      damage: '$5,000',
-      atFaultForAccident: true
-    },{
-      date: '7/4/98',
-      damage: '$2,200',
-      atFaultForAccident: true
-    },{
-      date: '6/22/99',
-      damage: '$7,900',
-      atFaultForAccident: true
-    }
-  ]
-}
+	make: 'Toyota',
+	model: 'Corolla',
+	year: 1992,
+	accidents: [{
+		date: '3/15/93',
+		damage: '$5,000',
+		atFaultForAccident: true
+	}, {
+		date: '7/4/98',
+		damage: '$2,200',
+		atFaultForAccident: true
+	}, {
+		date: '6/22/99',
+		damage: '$7,900',
+		atFaultForAccident: true
+	}]
+};
 
 // Code here
-
+function recordCleaner() {
+	myCar.accidents.forEach(function(obj) {
+		obj.atFaultForAccident = false;
+	});
+}
 
 
 
@@ -135,14 +155,29 @@ var myCar = {
 // === PROBLEM 5 ==========
 
 // Below is an array of arrays. Use two for loops.
-// 1. Write a function called 'looper'. 
-// 2. 'looper' should loop over the arrays. 
+// 1. Write a function called 'looper'.
+// 2. 'looper' should loop over the arrays.
 // 3. If the number is odd, replace it with 'odd'.
 //    If the number is even, replace it with 'even'.
 // 4. Return the modified numsArr.
 
-var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
+var numsArr = [
+	[1, 2, 3, 4],
+	[5, 6],
+	[7, 8, 9, 10, 11]
+];
 
 
-
-
+function looper() {
+	var newobj = Object.assign({}, numsArr);
+	for (var i = 0; i < numsArr.length; i++) {
+		for (var a = 0; a < numsArr[i].length; a++) {
+			if (numsArr[i][a] % 2 === 0) {
+				newobj[i].splice(a, 1, 'even');
+			} else {
+				newobj[i].splice(a, 1, 'odd');
+			}
+		}
+	}
+	return newobj;
+}
